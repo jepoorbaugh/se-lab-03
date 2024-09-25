@@ -25,9 +25,12 @@ Continue to follow appropriate software engineering practices including:
 
 # Design
 Three Pages:
-- `/`: Displays the same quote for 24 hours, then displays a new quote. 
+- `/`: Displays the same quote for 24 hours, then displays a new quote. The quote is chosen via the following:  
+```python 
+quote_list[(datetime.datetime.now() - datetime.datetime(1970,1,1)).days % len(quote_list)]
+```
 - `/topic/<topic>`: All quotes with topic `topic`
-- `/random`: Any random quote from the table
+- `/author/<author>`: All quotes with author `author`
 
 # Running Locally
 ## Step 1: Clone this Repository
@@ -49,4 +52,9 @@ To run this in production, see [Flask's instructions](https://flask.palletsproje
 
 # Testing
 Per the requirements, all pages must be tested.
-- All tests should be in `/tests`
+- All tests should be in the "tests/test_pages.py"
+- All tests should be run by Github Actions
+Tests to be run on each page:
+- `/`: Test to ensure the proper quote is displayed
+- `/topic/<topic>`: Ensure the proper amount of quotes are displayed
+- `/author/<author>`: Ensure the proper amount of quotes are displayed

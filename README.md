@@ -3,7 +3,7 @@ Software Engineering project to apply automated testing to backend web developme
 
 Basic app to display a daily inspirational quote to the user. Also has pages to display quotes with a specific tag a random quote.  
 
-Uses a table of quotes compiled by [Kaggle user manann](https://www.kaggle.com/datasets/manann/quotes-500k) 
+Uses a table of quotes compiled by [Kaggle user manann](https://www.kaggle.com/datasets/manann/quotes-500k). The set was filtered to only include the top 1000 most popular categories, and only quotes that contained at least 4 of these categories. This was done both to reduce the overall file size to allow the dataset to be uploaded to Github without dealing with large file storage, filter the dataset for uncategorized/poorly-categorized quotes, and limit the overall number of categories to something more reasonable. There are now around 100k quotes compared to the original 500k. 
 
 # Requirements
 - Use Flask to implement the backend for a web application

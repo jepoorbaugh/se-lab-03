@@ -1,0 +1,16 @@
+{% extends "main_page.html" %}
+{% block title %}Quote of the Day{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<h1>Quote of the Day</h1>
+<div id="quote-container">
+    <i>{{ quote }}</i>
+</div>
+<br />
+<div id="author-container">
+    <strong>{{ author }}</strong>
+</div>
+{% endblock %}

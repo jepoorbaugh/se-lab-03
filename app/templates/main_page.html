@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% block head %}
+    <title>{% block title %}{% endblock%} - Quote Hub</title>
+    {% endblock %}
+</head>
+
+<body>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <br />
+    <footer>
+        {% block footer %}
+        Copyright Ethan Poorbaugh, 2024
+        {% endblock %}
+    </footer>
+</body>
+
+</html>

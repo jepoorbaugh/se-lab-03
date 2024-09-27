@@ -9,11 +9,6 @@ def client():
     return app.test_client()
 
 
-# @pytest.fixture
-# def quote_data():
-#     return pd.read_csv("filtered_quotes.csv")
-
-
 def test_quote_of_the_day(client):
     """Test for the root page. Checks to see if the correct quote information is being displayed.
 
@@ -48,5 +43,20 @@ def test_topic_page(client):
     # Assert we are telling the user the number of results, and displaying at least the first result.
     response = client.get(f"/topic/{topic}")
     assert str(len(category_quote_data)).encode("UTF-8") in response.data
+    assert first_result["quote"].encode("UTF-8") in response.data
+    assert first_result["author"].encode("UTF-8") in response.data
+
+
+def test_author_page(client):
+    # Pick an author we know is in the dataset.
+    quote_data = pd.read_csv("filtered_quotes.csv")
+    author = "Victor Hugo, Les Misérables"
+
+    author_quote_data = quote_data[quote_data["author"] == author].sort_values("quote")
+    first_result = author_quote_data.iloc[0].to_dict()
+
+    # Check num results, first result is present. 
+    response = client.get(f"/author/{author}")
+    assert str(len(author_quote_data)).encode("UTF-8") in response.data
     assert first_result["quote"].encode("UTF-8") in response.data
     assert first_result["author"].encode("UTF-8") in response.data

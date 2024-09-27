@@ -1,0 +1,20 @@
+{% extends "main_page.html" %}
+{% block title %}{{ num_results }} results for {{ topic }}{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<h1>Quotes about "{{ topic }}"</h1>
+<p>Showing {{ num_results }} quotes</p>
+{% for quote_item in quotes %}
+<div id="quote-container">
+    <i>{{ quote_item.quote }}</i>
+</div>
+<br />
+<div id="author-container">
+    <strong>{{ quote_item.author }}</strong>
+</div>
+<p>--------------------</p>
+{% endfor %}
+{% endblock %}

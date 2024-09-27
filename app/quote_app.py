@@ -31,7 +31,7 @@ def topic_page(topic):
     ].sort_values("author")
 
     return render_template(
-        "topic.html",
+        "quote_list.html",
         num_results=len(category_quote_data),
         topic=topic,
         quotes=category_quote_data.to_records(),

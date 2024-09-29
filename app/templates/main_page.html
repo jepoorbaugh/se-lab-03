@@ -8,6 +8,36 @@
 </head>
 
 <body>
+    <nav>
+        <span>
+            <h1>Quote Hub</h1>
+        </span>
+        <span>Quote of the Day</span>
+        <span>
+            <form action="/" method="post" id="search-author">
+                <label for="topic-input">Topic: </label>
+                <select id="topic-input" name="topic">
+                    {% for option in topic_options %}
+                    <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+                <label for="topic-submit">Search</label>
+                <input type="submit" value="Submit" id="topic-submit">
+            </form>
+        </span>
+        <span>
+            <form action="/" method="post" id="search-author">
+                <label for="author-input">Author: </label>
+                <select id="author-input" name="author">
+                    {% for option in author_options %}
+                    <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+                <label for="topic-submit">Search</label>
+                <input type="submit" value="Submit" id="topic-submit">
+            </form>
+        </span>
+    </nav>
     <div id="content">
         {% block content %}
         {% endblock %}

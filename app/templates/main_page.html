@@ -8,6 +8,38 @@
 </head>
 
 <body>
+    <nav>
+        <span>
+            <h1>Quote Hub</h1>
+        </span>
+        <span><a href="{{ qotd_url }}">Quote of the Day</a></span>
+        <span>
+            <form action="/redirect" method="post" id="search-author">
+                <label for="topic-input">Topic: </label>
+                <input id="topic-input" name="topic" type="text" list="topic-data-list">
+                <datalist id="topic-data-list">
+                    {% for option in topic_options %}
+                    <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </datalist>
+                <!-- <label for="topic-submit">Search</label> -->
+                <input type="submit" value="Search" id="topic-submit" disabled="true">
+            </form>
+        </span>
+        <span>
+            <form action="/redirect" method="post" id="search-author">
+                <label for="author-input">Author: </label>
+                <input id="author-input" name="author" type="text" list="author-data-list" />
+                <datalist id="author-data-list">
+                    {% for option in author_options %}
+                    <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </datalist>
+                <!-- <label for="topic-submit">Search</label> -->
+                <input type="submit" value="Search" id="topic-submit" disabled="true">
+            </form>
+        </span>
+    </nav>
     <div id="content">
         {% block content %}
         {% endblock %}
@@ -18,6 +50,7 @@
         Copyright Ethan Poorbaugh, 2024
         {% endblock %}
     </footer>
+    <script src="{{ script_url }}"></script>
 </body>
 
 </html>

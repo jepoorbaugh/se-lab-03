@@ -14,8 +14,6 @@ authors = quote_data["author"].unique()
 
 @app.route("/")
 def quote_of_the_day():
-    # if request.method == "GET":
-    # Get quote of the day
     quote_index = (datetime.datetime.now() - datetime.datetime(1970, 1, 1)).days % len(
         quote_data
     )
@@ -27,13 +25,8 @@ def quote_of_the_day():
         topic_options=categories,
         author_options=authors,
         qotd_url=url_for("quote_of_the_day"),
+        script_url=url_for("static", filename="index.js"),
     )
-    # elif request.method == "POST":
-    #     # Deal with redirecting users
-    #     if "topic" in request.form.keys():
-    #         return redirect(url_for("topic_page", topic=request.form["topic"]))
-    #     elif "author" in request.form.keys():
-    #         return redirect(url_for("author_page", author=request.form["author"]))
 
 
 @app.route("/topic/<topic>")
@@ -53,6 +46,7 @@ def topic_page(topic):
         topic=topic,
         quotes=category_quote_data.to_records(),
         qotd_url=url_for("quote_of_the_day"),
+        script_url=url_for("static", filename="index.js"),
     )
 
 
@@ -70,6 +64,7 @@ def author_page(author):
         topic=author,
         quotes=author_quote_data.to_records(),
         qotd_url=url_for("quote_of_the_day"),
+        script_url=url_for("static", filename="index.js"),
     )
 
 

@@ -23,7 +23,7 @@
                     {% endfor %}
                 </datalist>
                 <!-- <label for="topic-submit">Search</label> -->
-                <input type="submit" value="Search" id="topic-submit">
+                <input type="submit" value="Search" id="topic-submit" disabled="true">
             </form>
         </span>
         <span>
@@ -36,7 +36,7 @@
                     {% endfor %}
                 </datalist>
                 <!-- <label for="topic-submit">Search</label> -->
-                <input type="submit" value="Search" id="topic-submit">
+                <input type="submit" value="Search" id="topic-submit" disabled="true">
             </form>
         </span>
     </nav>
@@ -50,6 +50,7 @@
         Copyright Ethan Poorbaugh, 2024
         {% endblock %}
     </footer>
+    <script src="{{ script_url }}"></script>
 </body>
 
 </html>

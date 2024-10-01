@@ -6,11 +6,12 @@
 
 {% block content %}
 <h1>Quote of the Day</h1>
-<div id="quote-container">
-    <i>{{ quote }}</i>
-</div>
-<br />
-<div id="author-container">
-    <strong>{{ author }}</strong>
+<div class="quote-container">
+    <p class="quote-text">
+        {{ quote }}
+    </p>
+    <p class="author-container">
+        {{ author }}
+    </p>
 </div>
 {% endblock %}

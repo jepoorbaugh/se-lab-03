@@ -50,12 +50,16 @@ def test_topic_page(client):
 def test_author_page(client):
     # Pick an author we know is in the dataset.
     quote_data = pd.read_csv("filtered_quotes.csv")
-    author = "Victor Hugo, Les Misérables"
+    quote_data["lower_author"] = quote_data["author"].str.lower()
 
-    author_quote_data = quote_data[quote_data["author"] == author].sort_values("quote")
+    author = "Victor Hugo, Les Misérables".lower()
+
+    author_quote_data = quote_data[quote_data["lower_author"] == author].sort_values(
+        "quote"
+    )
     first_result = author_quote_data.iloc[0].to_dict()
 
-    # Check num results, first result is present. 
+    # Check num results, first result is present.
     response = client.get(f"/author/{author}")
     assert str(len(author_quote_data)).encode("UTF-8") in response.data
     assert first_result["quote"].encode("UTF-8") in response.data

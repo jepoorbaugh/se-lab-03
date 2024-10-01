@@ -3,17 +3,27 @@
 
 <head>
     {% block head %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=DM+Serif+Display:ital@0;1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+
     <title>{% block title %}{% endblock%} - Quote Hub</title>
     {% endblock %}
 </head>
 
 <body>
     <nav>
-        <span>
-            <h1>Quote Hub</h1>
+        <span class="nav-option">
+            <h1>Quote hub</h1>
         </span>
-        <span><a href="{{ qotd_url }}">Quote of the Day</a></span>
-        <span>
+        <span class="nav-option"><a href="{{ qotd_url }}">Quote of the Day</a></span>
+        <span class="nav-option">
             <form action="/redirect" method="post" id="search-author">
                 <label for="topic-input">Topic: </label>
                 <input id="topic-input" name="topic" type="text" list="topic-data-list">
@@ -22,11 +32,10 @@
                     <option value="{{ option }}">{{ option }}</option>
                     {% endfor %}
                 </datalist>
-                <!-- <label for="topic-submit">Search</label> -->
                 <input type="submit" value="Search" id="topic-submit" disabled="true">
             </form>
         </span>
-        <span>
+        <span class="nav-option">
             <form action="/redirect" method="post" id="search-author">
                 <label for="author-input">Author: </label>
                 <input id="author-input" name="author" type="text" list="author-data-list" />
@@ -35,8 +44,7 @@
                     <option value="{{ option }}">{{ option }}</option>
                     {% endfor %}
                 </datalist>
-                <!-- <label for="topic-submit">Search</label> -->
-                <input type="submit" value="Search" id="topic-submit" disabled="true">
+                <input type="submit" value="Search" id="author-submit" disabled="true">
             </form>
         </span>
     </nav>
@@ -47,7 +55,8 @@
     <br />
     <footer>
         {% block footer %}
-        Copyright Ethan Poorbaugh, 2024
+        <p>Copyright Ethan Poorbaugh, 2024</p>
+        <p>jepoorbaugh@gmail.com</p>
         {% endblock %}
     </footer>
     <script src="{{ script_url }}"></script>

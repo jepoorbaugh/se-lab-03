@@ -8,8 +8,9 @@ app = Flask(__name__)
 
 
 quote_data = pd.read_csv("filtered_quotes.csv")
+quote_data["lower_author"] = quote_data["author"].str.lower()
 categories = quote_data["category"].apply(lambda x: x.split(", ")).explode().unique()
-authors = quote_data["author"].unique()
+authors = quote_data["lower_author"].unique()
 
 
 @app.route("/")
@@ -53,7 +54,9 @@ def topic_page(topic):
 @app.route("/author/<author>")
 def author_page(author):
     # Get quotes by author
-    author_quote_data = quote_data[quote_data["author"] == author].sort_values("author")
+    author_quote_data = quote_data[quote_data["lower_author"] == author].sort_values(
+        "author"
+    )
 
     return render_template(
         "quote_list.html",

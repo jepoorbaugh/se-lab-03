@@ -7,14 +7,17 @@
 {% block content %}
 <h1>Quotes about "{{ topic }}"</h1>
 <p>Showing {{ num_results }} quotes</p>
-{% for quote_item in quotes %}
-<div id="quote-container">
-    <i>{{ quote_item.quote }}</i>
+<div id="quote-container-list">
+    {% for quote_item in quotes %}
+    <div class="quote-container">
+        <p class="quote-text">
+            {{ quote_item.quote }}
+        </p>
+        <p class="author-container">
+            {{ quote_item.author }}
+        </p>
+    </div>
+    <!-- <hr> -->
+    {% endfor %}
 </div>
-<br />
-<div id="author-container">
-    <strong>{{ quote_item.author }}</strong>
-</div>
-<hr>
-{% endfor %}
 {% endblock %}
